@@ -1,0 +1,101 @@
+.welcomeForms {
+    width: 500px;
+    height: 400px;
+    border: 2px solid black;
+    display: inline-block
+}
+
+.logReg {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#wrapper {
+    width: 1200px;
+}
+
+label{
+    display: inline-block;
+    clear: left;
+    width: 250px;
+    text-align: right;
+}
+
+input {
+  display: inline-block;
+
+}
+
+#header {
+    display: block;
+    height: 20px;
+}
+
+#header > a {
+    margin-right: 15px;
+}
+
+#headerRightPush {
+    margin-left: 950px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+.formPush {
+    margin-left:200px;
+}
+
+.errorMessage {
+    color: red;
+}
+
+#allQoutesBox {
+    width: 500px;
+    height: 650px;
+    overflow: scroll;
+    border: 2px solid black;
+    display: inline-block;
+}
+
+#favQoutesBox {
+    width: 500px;
+    height: 300px;
+    overflow: scroll;
+    border: 2px solid black;
+    display: inline-block;
+    margin-left:150px;
+    vertical-align: top;
+}
+
+.innerQouteBox {
+    border: 1px solid black;
+    margin: 5px;
+    padding:3px;
+}
+
+
+#addQoute {
+    display: inline-block;
+    width: 200px;
+    margin-left:150px;
+}
+
+.addQouteLabels {
+    width: auto;
+}
+
+#rightDashboadContent {
+    display: inline-block;
+    width: 450px;
+    vertical-align: top;
+}
+
+.qouteName {
+    color: rgba(230, 16, 69, 0.959);
+}

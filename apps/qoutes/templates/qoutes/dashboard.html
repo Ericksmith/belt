@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Qoutes</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'qoutes/css/styles.css' %}">
+</head>
+<body>
+    <div id='wrapper'>
+        <div id='header'>
+            <a href="/logout" id='headerRightPush'>Logout</a>
+        </div>
+        <h2>Welcome, {{user.alias}}</h2>
+        <div id='allQoutesBox'>
+                <h3>Qoutable Qoutes</h3>
+            {% if all_qoutes %}
+                {% for qoute in all_qoutes%}
+                    <div class='innerQouteBox'>
+                        <p>{{qoute.qoute_by}}: {{qoute.message}}</p>
+                        <div>
+                            <p class='postedBy'>Posted by: <a href="/users/{{qoute.posted_by.id}}">{{qoute.posted_by.alias}}</a></p>
+                            <form action="/followQoute/{{qoute.id}}" method="post">
+                                {% csrf_token %}
+                                <input type="submit" value="Add to My List">
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else%}
+                <h4>No qoutes yet. Be the first to add one!</h4>
+            {% endif %}
+        </div>
+        <div id='rightDashboadContent'>
+            <div id='favQoutesBox'>
+                    <h3>Your Favorites</h3>
+                    {% if fav_qoutes %}
+                    {% for qoute in fav_qoutes%}
+                        <div class='innerQouteBox'>
+                            <p>{{qoute.qoute_by}}: {{qoute.message}}</p>
+                            <div>
+                                <p class='postedBy'>Posted by: <a href="/users/{{qoute.posted_by.id}}">{{qoute.posted_by.alias}}</a></p>
+                                <form action="/removeQoute/{{qoute.id}}" method="post">
+                                    {% csrf_token %}
+                                    <input type="submit" value="Remove From My List">
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else%}
+                    <h4>No favorite qoutes yet.</h4>
+                {% endif %}
+            </div>
+            <div id='addQoute'>
+                <h3>Contribute a Qoute:</h3>
+                <form action="addQoute" method="post">
+                    {% csrf_token %}
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li class='errorMessage'>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <p><label for="qoute_by" class='addQouteLabels'>Name:</label><input type="text" name="qoute_by"></p>
+                    <p><label for="message" class='addQouteLabels'>message:</label><textarea name="message" cols="30" rows="10"></textarea></p>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>    
+    </div>
+</body>
+</html>
